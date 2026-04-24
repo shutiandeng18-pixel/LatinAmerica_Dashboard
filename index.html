@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拉丁美洲概况 — 交互式可视化</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson-client@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>拉丁美洲概况</h1>
+    <p class="subtitle">交互式历史 · 政治 · 经济 · 社会可视化</p>
+    <button id="themeToggle" class="theme-toggle" aria-label="切换主题">◐</button>
+  </header>
+
+  <main class="dashboard">
+    <section class="map-section" id="mapSection">
+      <div class="map-controls">
+        <div class="search-box">
+          <input type="text" id="countrySearch" placeholder="搜索国家…" autocomplete="off">
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <div class="legend">
+          <span class="legend-label">地区</span>
+          <span class="legend-dot" style="background:#E07A5F"></span>北美与中美
+          <span class="legend-dot" style="background:#3D405B"></span>加勒比
+          <span class="legend-dot" style="background:#81B29A"></span>安第斯
+          <span class="legend-dot" style="background:#F2CC8F"></span>南锥体
+          <span class="legend-dot" style="background:#9B5DE5"></span>巴西
+        </div>
+      </div>
+      <div id="mapContainer"></div>
+      <div class="map-tooltip" id="mapTooltip"></div>
+    </section>
+
+    <aside class="detail-panel" id="detailPanel">
+      <button class="panel-close" id="panelClose" aria-label="关闭">×</button>
+      <div class="panel-header">
+        <img class="flag" id="detailFlag" src="" alt="">
+        <div class="panel-title-group">
+          <h2 id="detailName">选择国家</h2>
+          <span class="panel-sub" id="detailSub"></span>
+        </div>
+      </div>
+
+      <nav class="panel-tabs" id="panelTabs">
+        <button data-tab="overview" class="active">概览</button>
+        <button data-tab="history">历史</button>
+        <button data-tab="politics">政治</button>
+        <button data-tab="economy">经济</button>
+        <button data-tab="society">社会</button>
+      </nav>
+
+      <div class="panel-body" id="panelBody">
+        <div class="tab-content active" id="tab-overview"></div>
+        <div class="tab-content" id="tab-history"></div>
+        <div class="tab-content" id="tab-politics"></div>
+        <div class="tab-content" id="tab-economy"></div>
+        <div class="tab-content" id="tab-society"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <small>数据来源：世界银行、IMF、UNDP、各国官方统计 · 仅供学术参考</small>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
